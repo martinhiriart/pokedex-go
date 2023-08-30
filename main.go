@@ -1,9 +1,21 @@
 package main
 
 import (
-	"fmt"
+	"time"
+
+	"github.com/martinhiriart/pokedex-go/internal/pokeapi"
 )
 
+type config struct {
+	pokeapiClient           pokeapi.Client
+	nextLocationAreaURL     *string
+	previousLocationAreaURL *string
+}
+
 func main() {
-	fmt.Println("hello world")
+	cacheInterval := time.Hour
+	cfg := config{
+		pokeapiClient: pokeapi.NewClient(cacheInterval),
+	}
+	startCli(&cfg)
 }
