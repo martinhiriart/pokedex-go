@@ -1,5 +1,5 @@
-//go:build !windows
-// +build !windows
+//go:build windows
+// +build windows
 
 package main
 
@@ -9,7 +9,7 @@ import (
 )
 
 func callbackClear(cfg *config, args ...string) error {
-	cmd := exec.Command("clear")
+	cmd := exec.Command("cmd", "/c", "cls")
 	cmd.Stdout = os.Stdout
 	cmd.Run()
 
