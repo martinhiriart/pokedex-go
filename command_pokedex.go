@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/martinhiriart/pokedex-go/internal/styling"
 )
 
 func callbackPokedex(cfg *config, args ...string) error {
@@ -13,12 +14,12 @@ func callbackPokedex(cfg *config, args ...string) error {
 		return errors.New("ERROR: no pokemon caught yet")
 	}
 
-	fmt.Println("Pokemon in your Pokedex:")
-	fmt.Println("------------------------")
+	styling.PrintStyledMessage("Pokemon in your Pokedex:", "MenuHeader")
+	styling.PrintStyledMessage("------------------------", "Menu")
 	for _, poke := range pokemon {
 		fmt.Printf("%s\n", poke.Name)
 	}
-	fmt.Println("------------------------")
+	styling.PrintStyledMessage("------------------------", "Menu")
 	fmt.Println()
 	return nil
 }

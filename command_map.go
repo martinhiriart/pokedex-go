@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/martinhiriart/pokedex-go/internal/styling"
 )
 
 func callbackMap(cfg *config, args ...string) error {
@@ -13,12 +14,12 @@ func callbackMap(cfg *config, args ...string) error {
 		return err
 	}
 	fmt.Println()
-	fmt.Println("Location areas:")
-	fmt.Println("---------------")
+	styling.PrintStyledMessage("Location areas:", "MenuHeader")
+	styling.PrintStyledMessage("---------------", "Menu")
 	for _, area := range resp.Results {
 		fmt.Println(area.Name)
 	}
-	fmt.Println("---------------")
+	styling.PrintStyledMessage("---------------", "Menu")
 	fmt.Println()
 
 	cfg.nextLocationAreaURL = resp.Next
@@ -38,12 +39,12 @@ func callbackMapB(cfg *config, args ...string) error {
 		return err
 	}
 	fmt.Println()
-	fmt.Println("Location areas:")
-	fmt.Println("---------------")
+	styling.PrintStyledMessage("Location areas:", "MenuHeader")
+	styling.PrintStyledMessage("---------------", "Menu")
 	for _, area := range resp.Results {
 		fmt.Println(area.Name)
 	}
-	fmt.Println("---------------")
+	styling.PrintStyledMessage("---------------", "Menu")
 	fmt.Println()
 
 	cfg.nextLocationAreaURL = resp.Next
